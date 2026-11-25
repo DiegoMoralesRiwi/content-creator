@@ -51,6 +51,7 @@ Cada Skill se entrega en dos zips distintos, porque las plataformas usan formato
 | ChatGPT | `dist/chatgpt/<skill>.zip` | `plugin.json`, `.codex-plugin/plugin.json`, `skills/<skill>/SKILL.md`, scripts y recursos |
 
 - Generar ambos con `.venv/Scripts/python tools/build_skills.py [skill]`. Nunca entregar uno solo.
+- Límite que manda: **30 MB sin comprimir por Skill** (Claude); el build falla si se supera. Optimizar imágenes y fuentes. Detalles y cómo compartir: `docs/distribucion.md`.
 - **Antes de entregar zips con cambios, subir la versión en `VERSION`** (semver: parche para correcciones, menor para funcionalidad nueva). ChatGPT rechaza un complemento con la misma versión ya instalada.
 - Cada Skill necesita `skills/<skill>/chatgpt.json` (displayName, shortDescription, description, defaultPrompt, category); no se incluye en los zips. El autor está en `tools/build_config.json` y la versión en `VERSION`.
 - Las rutas de los scripts deben ser relativas a la carpeta de la Skill (`Path(__file__)`): la ruta de instalación cambia según la plataforma y la versión. La carpeta de salida se recibe con `--salida` o se detecta: `/mnt/user-data/outputs` (Claude), `/mnt/data` (ChatGPT chat); en el entorno de agente de ChatGPT no existen y el modelo debe indicar una carpeta escribible.

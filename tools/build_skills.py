@@ -16,6 +16,7 @@ import zipfile
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
+LIMITE_CLAUDE = 30 * 1024 * 1024
 IGNORAR = {".gitkeep", "__pycache__", ".DS_Store", "chatgpt.json"}
 
 
@@ -74,6 +75,11 @@ def empaquetar(skill_dir: Path) -> list[Path]:
     meta = json.loads(meta_path.read_text(encoding="utf-8"))
     autor = json.loads((RAIZ / "tools" / "build_config.json").read_text(encoding="utf-8"))["author"]
     version = (RAIZ / "VERSION").read_text(encoding="utf-8").strip()
+
+    # Claude limita cada Skill a 30 MB sin comprimir (docs de Anthropic)
+    total = sum(f.stat().st_size for f in archivos(skill_dir))
+    if total > LIMITE_CLAUDE:
+        raise SystemExit(f"{nombre}: {total / 1e6:.1f} MB sin comprimir; Claude admite máximo 30 MB")
 
     salidas = []
     # Claude

@@ -30,9 +30,10 @@ Leyenda: `[x]` lista · `[ ]` pendiente. Plan detallado: [docs/plan-de-trabajo.m
   - [x] ~~Crear GPT de prueba~~: ChatGPT ya no permite crear GPT
   - [x] Prueba con Plugin Creator: recursos intactos, PPTX y PNG generados (entorno de agente, sin Jinja2)
   - [x] Confirmar en una conversación nueva que el complemento 0.3.0 carga y ejecuta «Probar Brand Studio»
-  - [ ] Entender qué superficie de ChatGPT usa cada entorno (chat normal: archivos ausentes; agente/Work: archivos presentes)
-- [ ] Verificar el tamaño máximo del zip y los límites de archivos (ChatGPT: 780 MB; SKILL.md máx. 1 MiB; Claude pendiente)
-- [ ] Verificar cómo se comparte una Skill con el espacio de trabajo en cada plataforma
+  - [x] Superficie: la 0.3.0 funcionó en el chat normal (también se invoca con `@` + nombre del complemento)
+- [x] Verificar límites: Claude 30 MB sin comprimir por Skill (manda); ChatGPT 780 MB. Ver `docs/distribucion.md`. El build valida el límite
+- [x] Investigar cómo se comparte en cada plataforma (`docs/distribucion.md`)
+- [ ] Confirmar con IT quién es owner/admin en Claude y ChatGPT y que el uso compartido esté habilitado
 - [x] Documentar resultados y ajustar el stack (`docs/validacion-plataformas.md`)
 
 ## Fase 2 — Recursos de marca
