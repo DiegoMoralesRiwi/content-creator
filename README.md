@@ -1,6 +1,6 @@
 # Brand Studio
 
-Herramienta corporativa para que los equipos comerciales y de mercadeo de **Riwi** y **Blackbird Labs** generen presentaciones, propuestas y contenido para redes desde ChatGPT o Claude, respetando la identidad de cada marca.
+Herramienta corporativa para que los equipos comerciales y de mercadeo de **Riwi**, **Blackbird LATAM** y **Blackbird USA** generen presentaciones, propuestas y contenido para redes desde ChatGPT o Claude, respetando la identidad de cada marca.
 
 Se distribuye como dos Skills instalables:
 

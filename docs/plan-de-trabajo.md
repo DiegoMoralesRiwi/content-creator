@@ -2,7 +2,7 @@
 
 ## 1. Idea del proyecto
 
-Construir una herramienta corporativa que permita a los equipos comerciales y de mercadeo de **Riwi y Blackbird Labs** generar presentaciones, propuestas comerciales y contenido para redes sociales directamente desde ChatGPT o Claude, respetando la identidad visual y verbal de cada marca.
+Construir una herramienta corporativa que permita a los equipos comerciales y de mercadeo de **Riwi, Blackbird LATAM y Blackbird USA** generar presentaciones, propuestas comerciales y contenido para redes sociales directamente desde ChatGPT o Claude, respetando la identidad visual y verbal de cada marca.
 
 La herramienta contará con un repositorio privado que centralizará los diseños, plantillas, recursos gráficos, información corporativa, reglas de marca y scripts de generación.
 
@@ -18,16 +18,18 @@ Estos recursos se distribuirán mediante Skills instalables en ChatGPT y Claude,
 | Casos de éxito y one-pagers | Contenido comercial y copy para redes sociales |
 | Formatos: PPTX, DOCX y PDF | Formatos: PNG, JPG y SVG |
 
-Ambos ambientes tendrán acceso a los recursos oficiales de las dos marcas, conservando sus identidades de manera independiente.
+Ambos ambientes tendrán acceso a los recursos oficiales de las tres marcas, conservando sus identidades de manera independiente.
 
 ## 2. Arquitectura de la herramienta
 
 ```mermaid
 flowchart TD
     A[GitHub privado - administrado por el desarrollador] --> B[Riwi - recursos e identidad]
-    A --> C[Blackbird Labs - recursos e identidad]
+    A --> C[Blackbird LATAM - recursos e identidad]
+    A --> C2[Blackbird USA - recursos e identidad]
     B --> D[Motor de generación: Python, plantillas y validaciones]
     C --> D
+    C2 --> D
     D --> E[Presentation Studio - paquete instalable]
     D --> F[Content Studio - paquete instalable]
     E --> G[ChatGPT Online]
@@ -74,7 +76,8 @@ Se utilizará un único repositorio privado, dividido internamente por marcas y 
 brand-studio/
 ├── brands/
 │   ├── riwi/
-│   └── blackbird-labs/
+│   ├── blackbird-latam/
+│   └── blackbird-usa/
 ├── engines/
 │   ├── presentations/
 │   └── content/
@@ -115,8 +118,8 @@ El desarrollador construirá dos paquetes autocontenidos que incluirán todos lo
 
 | Paquete | Contenido |
 |---|---|
-| `presentation-studio.zip` | Plantillas, instrucciones, recursos y generadores de presentaciones de ambas marcas. |
-| `content-studio.zip` | Plantillas, instrucciones, recursos y generadores de contenido de ambas marcas. |
+| `presentation-studio.zip` | Plantillas, instrucciones, recursos y generadores de presentaciones de las tres marcas. |
+| `content-studio.zip` | Plantillas, instrucciones, recursos y generadores de contenido de las tres marcas. |
 
 Estos paquetes se instalarán como Skills dentro de ChatGPT y Claude y se compartirán con los usuarios del espacio de trabajo corporativo, según las capacidades de administración de cada plataforma.
 
@@ -128,9 +131,9 @@ La experiencia será completamente conversacional. Los usuarios ingresarán dire
 
 ### Ejemplo de uso — Presentation Studio
 
-**Comercial:** Necesito una presentación comercial de Blackbird Labs para una empresa del sector financiero interesada en servicios de inteligencia artificial.
+**Comercial:** Necesito una presentación comercial de Blackbird USA para una empresa del sector financiero interesada en servicios de inteligencia artificial.
 
-**IA:** Para generar la presentación con la identidad oficial de Blackbird Labs, necesito los siguientes datos:
+**IA:** Para generar la presentación con la identidad oficial de Blackbird USA, necesito los siguientes datos:
 
 - Nombre de la empresa.
 - Servicios que deseas presentar.
@@ -139,9 +142,9 @@ La experiencia será completamente conversacional. Los usuarios ingresarán dire
 
 **Comercial:** Empresa ABC, AI Solutions y automatización. 8 diapositivas, en inglés.
 
-**IA:** La presentación ha sido generada utilizando las plantillas y recursos corporativos de Blackbird Labs.
+**IA:** La presentación ha sido generada utilizando las plantillas y recursos corporativos de Blackbird USA.
 
-**Resultado:** `BBL_ABC_Proposal.pptx` — 8 diapositivas, PowerPoint editable.
+**Resultado:** `BBUSA_ABC_Proposal.pptx` — 8 diapositivas, PowerPoint editable.
 
 *Simulación de la experiencia de usuario.*
 

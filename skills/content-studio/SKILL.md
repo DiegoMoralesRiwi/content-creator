@@ -1,6 +1,6 @@
 ---
 name: content-studio
-description: TODO — describir cuándo usar esta skill (Brand Studio, Riwi y Blackbird Labs).
+description: TODO — describir cuándo usar esta skill (Brand Studio, Riwi, Blackbird LATAM y Blackbird USA).
 ---
 
 # content-studio

@@ -2,7 +2,7 @@
 
 ## Qué es este proyecto
 
-Brand Studio genera materiales corporativos para **Riwi** y **Blackbird Labs** desde ChatGPT y Claude (online), distribuidos como **Agent Skills** instalables. Sin APIs pagas, sin servidores, sin bases de datos, sin Figma. Costo recurrente objetivo: USD $0/mes.
+Brand Studio genera materiales corporativos para **Riwi**, **Blackbird LATAM** y **Blackbird USA** desde ChatGPT y Claude (online), distribuidos como **Agent Skills** instalables. Sin APIs pagas, sin servidores, sin bases de datos, sin Figma. Costo recurrente objetivo: USD $0/mes.
 
 Plan completo y fuente de verdad: [docs/plan-de-trabajo.md](docs/plan-de-trabajo.md).
 
@@ -13,12 +13,12 @@ Dos ambientes / dos paquetes:
 | `presentation-studio` | Equipo comercial | Presentaciones, propuestas, cotizaciones, casos de éxito, one-pagers — PPTX, DOCX, PDF |
 | `content-studio` | Mercadeo y comunicaciones | Posts, carruseles, historias, banners, copy — PNG, JPG, SVG |
 
-Ambos paquetes contienen los recursos de las **dos** marcas, pero las identidades se mantienen estrictamente separadas (nunca mezclar colores, logos, tono o datos entre Riwi y Blackbird Labs).
+Ambos paquetes contienen los recursos de las **tres** marcas, pero las identidades se mantienen estrictamente separadas (nunca mezclar colores, logos, tono o datos entre Riwi, Blackbird LATAM y Blackbird USA; tampoco entre las dos Blackbird).
 
 ## Estructura
 
 ```
-brands/<marca>/        Identidad visual/verbal, logos, tipografías, colores, plantillas, imágenes
+brands/<marca>/        riwi, blackbird-latam, blackbird-usa: Identidad visual/verbal, logos, tipografías, colores, plantillas, imágenes
 engines/presentations/ Motor Python para PPTX/DOCX/PDF
 engines/content/       Motor Python para imágenes de redes
 knowledge/             Info corporativa, servicios, reglas comerciales, tono de voz
@@ -26,6 +26,7 @@ skills/<skill>/SKILL.md Instrucciones de cada Skill
 tests/                 pytest
 build/, dist/          Artefactos generados (no versionados); dist/ produce los .zip de las Skills
 docs/                  Plan de trabajo y documentación
+TAREAS.md              Plan de tareas: marcar [x] al completar cada tarea y commitear
 VERSION                Versión semántica de los paquetes
 ```
 
