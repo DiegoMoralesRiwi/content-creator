@@ -40,6 +40,10 @@ Leyenda: `[x]` lista · `[ ]` pendiente. Plan detallado: [docs/plan-de-trabajo.m
 
 Por cada marca: manual de identidad, logos, tipografías, colores, iconografía, imágenes y plantillas.
 
+Especificación detallada: `docs/fase2-recursos-requeridos.md`. Los originales se dejan en `brands/<marca>/originales/`.
+
+- [x] Definir la lista de recursos requeridos con formatos y tamaños
+
 - [ ] Riwi: recopilar y organizar recursos en `brands/riwi/`
 - [ ] Blackbird LATAM: recopilar y organizar recursos en `brands/blackbird-latam/`
 - [ ] Blackbird USA: recopilar y organizar recursos en `brands/blackbird-usa/`
