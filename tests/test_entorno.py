@@ -37,9 +37,7 @@ def test_pillow(tmp_path):
     assert out.stat().st_size > 0
 
 
-def test_jinja_y_jsonschema_dev():
-    """jsonschema solo se usa en desarrollo (no viene en los sandboxes)."""
-    from jinja2 import Template
+def test_jsonschema_dev():
+    """jsonschema solo se usa en desarrollo (no viene en todos los entornos)."""
     import jsonschema
-    assert Template("Hola {{ marca }}").render(marca="Riwi") == "Hola Riwi"
     jsonschema.validate({"marca": "Riwi"}, {"type": "object", "required": ["marca"]})

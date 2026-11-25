@@ -61,8 +61,8 @@ Los usuarios finales generan archivos mediante lenguaje natural, sin código, si
 | `python-pptx` | Generación de presentaciones PowerPoint. |
 | `python-docx` | Generación de documentos Word. |
 | `Pillow` | Generación y composición de imágenes. |
-| ~~`CairoSVG`~~ | Descartado: no está en el sandbox. SVG como texto con Jinja2; PNG/JPG con Pillow. |
-| `Jinja2` | Generación mediante plantillas dinámicas. |
+| ~~`CairoSVG`~~ | Descartado: no está en todos los entornos. SVG como texto; PNG/JPG con Pillow. |
+| ~~`Jinja2`~~ | Descartado: no está en el entorno de complementos de ChatGPT. Plantillas de texto con `string.Template` o f-strings. |
 | `ReportLab` | Generación de documentos PDF. |
 | `jsonschema` | Solo en desarrollo. Dentro de las Skills se usa un validador propio en Python puro. |
 | `pytest` | Pruebas automatizadas. |

@@ -29,7 +29,7 @@ Todas las rutas son relativas a la carpeta de esta Skill (la que contiene este `
    python scripts/hola_pptx.py --salida <carpeta de salida>/brand_studio_prueba.pptx
    ```
 
-   La carpeta de salida es `/mnt/user-data/outputs` o `/mnt/data`, la que exista.
+   La carpeta de salida es `/mnt/user-data/outputs` o `/mnt/data`, la que exista. Si no existe ninguna (por ejemplo, en un entorno de agente), usa una carpeta escribible desde la que puedas entregar archivos al usuario y pásala también a `recursos.py` con `--salida`. La carpeta de esta Skill es de solo lectura: nunca escribas ahí.
 
 Muestra al usuario la salida de los pasos 1 y 2 **tal cual**, sin resumir, y entrega los tres archivos generados para descargar.
 

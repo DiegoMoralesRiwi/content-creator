@@ -1,5 +1,4 @@
 python-pptx
 python-docx
 Pillow
-Jinja2
 reportlab

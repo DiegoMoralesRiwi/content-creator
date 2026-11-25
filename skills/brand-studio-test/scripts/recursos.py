@@ -12,13 +12,29 @@ SKILL_DIR = Path(__file__).resolve().parent.parent
 CARPETAS_SALIDA = ["/mnt/user-data/outputs", "/mnt/data"]
 
 
+def escribible(d: Path) -> bool:
+    try:
+        d.mkdir(parents=True, exist_ok=True)
+        prueba = d / ".brand_studio_test"
+        prueba.write_text("ok")
+        prueba.unlink()
+        return True
+    except OSError:
+        return False
+
+
 def carpeta_salida(arg):
+    """--salida si se indica; si no, la carpeta de descargas de la plataforma;
+    si no, el directorio actual (si no es la carpeta de la Skill); si no, /tmp."""
     if arg:
         return Path(arg)
     for d in CARPETAS_SALIDA:
-        if Path(d).is_dir():
+        if Path(d).is_dir() and escribible(Path(d)):
             return Path(d)
-    return Path.cwd()
+    cwd = Path.cwd()
+    if SKILL_DIR not in (cwd, *cwd.parents) and escribible(cwd):
+        return cwd
+    return Path("/tmp/brand-studio-output")
 
 
 def verificar():
@@ -80,6 +96,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--salida")
     salida = carpeta_salida(ap.parse_args().salida)
+    salida.mkdir(parents=True, exist_ok=True)
     print("=== Brand Studio - prueba de recursos ===")
     print(f"Carpeta de la Skill: {SKILL_DIR}")
     print(f"Carpeta de salida:   {salida}")

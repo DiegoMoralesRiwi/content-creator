@@ -65,6 +65,30 @@ La documentación de OpenAI sobre complementos describe `scripts/` y `assets/` d
 
 **Conclusión:** hoy, un complemento de ChatGPT no sirve para entregar recursos de marca binarios al entorno de ejecución. Hay que buscar otro canal para ChatGPT.
 
+### Complemento creado con Plugin Creator (v0.2.0/0.2.1) — ✅ recursos accesibles
+
+Se subió el zip a través de **Plugin Creator** (chat de creación de complementos). El complemento se ejecutó en un entorno distinto al de la primera prueba (tipo agente/"Work"):
+
+| Aspecto | Resultado |
+|---|---|
+| Python | 3.12.14 |
+| Ruta de la Skill | `/home/agent/.codex/plugins/cache/workspace-shared-with-me/<plugin>/<versión>/skills/<skill>` (**solo lectura**) |
+| Carpeta de salida | `/workspace/scratch/<id>/...` (no existen `/mnt/data` ni `/home/oai/skills`) |
+| python-pptx, python-docx, Pillow 13, ReportLab 4.4.9 | ✅ |
+| **Jinja2** | ❌ no instalado |
+| jsonschema | ✅ · CairoSVG ❌ |
+| `soffice` ✅ · `libreoffice` ❌ · `fc-list`, `convert`, `inkscape` ✅ | |
+| Fuentes del sistema | 368 |
+| Internet | No |
+| Recursos empaquetados | ✅ fuente, plantilla y logo intactos (sha256); PPTX y PNG generados |
+
+Observaciones:
+
+- Plugin Creator actualizó el complemento a **0.2.1** por su cuenta. Las próximas entregas deben usar una versión mayor (0.3.0).
+- La ruta depende del entorno y de la versión: los scripts deben resolver todo desde `__file__` (ya lo hacen).
+- Falta confirmar que una **conversación nueva** cargue el complemento y ejecute el flujo con «Probar Brand Studio».
+- Plugin Creator sugiere, si algún entorno no da acceso a los archivos, un servidor MCP propio. Se descarta por ahora: requiere hosting (contradice el costo $0).
+
 ## Comparación y conclusiones
 
 | | Claude | ChatGPT |
@@ -75,7 +99,7 @@ La documentación de OpenAI sobre complementos describe `scripts/` y `assets/` d
 | Internet | Sí | No |
 | Carpeta de salida | `/mnt/user-data/outputs` | `/mnt/data` |
 
-- **Base común:** python-pptx, python-docx, Pillow, ReportLab, Jinja2 y LibreOffice. Las Skills deben usar solo esto. Se confirma la decisión de no usar jsonschema ni CairoSVG.
+- **Base común (actualizada tras la prueba con Plugin Creator):** python-pptx, python-docx, Pillow, ReportLab y LibreOffice (`soffice`). **Jinja2 no está en todos los entornos**: no usarlo en las Skills. jsonschema y CairoSVG tampoco.
 - **Sin pip en ejecución:** ChatGPT no tiene internet, así que instalar paquetes al vuelo es imposible ahí.
 - **Las versiones difieren** (Pillow 12 vs 13, ReportLab 4 vs 5): evitar APIs nuevas o muy recientes.
 - **Carpeta de salida distinta:** los scripts deben recibir la ruta de salida o detectarla (`/mnt/user-data/outputs` o `/mnt/data`).

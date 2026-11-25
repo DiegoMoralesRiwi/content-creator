@@ -3,8 +3,6 @@
   dist/claude/<skill>.zip   -> <skill>/SKILL.md ...            (subir como Skill en Claude)
   dist/chatgpt/<skill>.zip  -> plugin.json, .codex-plugin/plugin.json,
                                skills/<skill>/SKILL.md ...     (subir como complemento en ChatGPT)
-  dist/gpt/<skill>/         -> <skill>.zip (archivo de conocimiento) + instrucciones.txt
-                               (GPT personalizado de ChatGPT; experimental)
 
 Los metadatos del complemento de ChatGPT salen de skills/<skill>/chatgpt.json
 (displayName, shortDescription, description, defaultPrompt, category) y de
@@ -66,26 +64,6 @@ def manifiestos_chatgpt(nombre: str, meta: dict, autor: dict, version: str):
     return codex, plugin
 
 
-ARRANQUE_GPT = """\
-ARRANQUE (hazlo siempre antes de cualquier otro paso, con la herramienta de ejecución de código):
-1. Busca el archivo {nombre}.zip entre tus archivos de conocimiento: primero /mnt/data/{nombre}.zip; si no está, busca cualquier "{nombre}*.zip" bajo /mnt/data.
-2. Descomprímelo con zipfile de Python en /tmp/ (queda /tmp/{nombre}/). Si ya existe, bórralo antes y descomprime de nuevo.
-3. Desde ese momento, "la carpeta de esta Skill" es /tmp/{nombre}/ y todos los comandos se ejecutan con cwd en esa carpeta.
-4. Si no encuentras el zip, dilo explícitamente al usuario (indica las rutas revisadas y lo que hay en /mnt/data) y detente.
-
-"""
-
-
-def instrucciones_gpt(nombre: str, skill_dir: Path) -> str:
-    cuerpo = (skill_dir / "SKILL.md").read_text(encoding="utf-8")
-    if cuerpo.startswith("---"):
-        cuerpo = cuerpo.split("---", 2)[2].lstrip()
-    texto = ARRANQUE_GPT.format(nombre=nombre) + cuerpo
-    if len(texto) > 8000:
-        raise SystemExit(f"{nombre}: las instrucciones del GPT superan 8000 caracteres ({len(texto)})")
-    return texto
-
-
 def empaquetar(skill_dir: Path) -> list[Path]:
     nombre = skill_dir.name
     if not (skill_dir / "SKILL.md").exists():
@@ -116,15 +94,6 @@ def empaquetar(skill_dir: Path) -> list[Path]:
         for f in archivos(skill_dir):
             z.write(f, Path("skills") / nombre / f.relative_to(skill_dir))
     salidas.append(chatgpt)
-
-    # GPT personalizado (experimental): zip de recursos como archivo de conocimiento + instrucciones
-    gpt_dir = RAIZ / "dist" / "gpt" / nombre
-    gpt_dir.mkdir(parents=True, exist_ok=True)
-    gpt_zip = gpt_dir / f"{nombre}.zip"
-    gpt_zip.write_bytes(claude.read_bytes())
-    instrucciones = gpt_dir / "instrucciones.txt"
-    instrucciones.write_text(instrucciones_gpt(nombre, skill_dir), encoding="utf-8")
-    salidas += [gpt_zip, instrucciones]
 
     for s in salidas:
         print(f"{s.relative_to(RAIZ)}  ({s.stat().st_size / 1024:.1f} KB)")

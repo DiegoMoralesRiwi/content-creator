@@ -35,11 +35,11 @@ VERSION                Versión semántica de los paquetes
 
 En este equipo Python se invoca con `py` (no `python`): p. ej. `py -m venv .venv`, `py -m pytest`. Versión local: 3.14.
 
-Dentro de las Skills (disponibles en el sandbox de Claude sin instalar nada): `python-pptx`, `python-docx`, `Pillow`, `Jinja2`, `ReportLab`, `zipfile` y biblioteca estándar. LibreOffice (`soffice`) está disponible para convertir PPTX/DOCX a PDF.
+Dentro de las Skills (base común verificada en Claude y ChatGPT, sin instalar nada): `python-pptx`, `python-docx`, `Pillow`, `ReportLab`, `zipfile` y biblioteca estándar. LibreOffice (`soffice`) está disponible para convertir PPTX/DOCX a PDF.
 
 Solo en desarrollo (`requirements-dev.txt`): `jsonschema`, `pytest`.
 
-**No usar en las Skills** `jsonschema` ni `CairoSVG` (no vienen en el sandbox). La validación de datos dentro de las Skills se hace con un validador propio en Python puro; los SVG se generan como texto (Jinja2) y los PNG/JPG con Pillow, sin rasterizar SVG. No depender de `pip install` en tiempo de ejecución. Resultados de validación: `docs/validacion-plataformas.md`. GitHub Actions para empaquetar y publicar versiones.
+**No usar en las Skills** `Jinja2`, `jsonschema` ni `CairoSVG` (no vienen en todos los entornos). La validación de datos dentro de las Skills se hace con un validador propio en Python puro; los SVG se generan como texto (`string.Template` o f-strings) y los PNG/JPG con Pillow, sin rasterizar SVG. No depender de `pip install` en tiempo de ejecución. Resultados de validación: `docs/validacion-plataformas.md`. GitHub Actions para empaquetar y publicar versiones.
 
 ## Empaquetado: SIEMPRE dos versiones
 
@@ -49,12 +49,11 @@ Cada Skill se entrega en dos zips distintos, porque las plataformas usan formato
 |---|---|---|
 | Claude | `dist/claude/<skill>.zip` | `<skill>/SKILL.md`, scripts y recursos |
 | ChatGPT | `dist/chatgpt/<skill>.zip` | `plugin.json`, `.codex-plugin/plugin.json`, `skills/<skill>/SKILL.md`, scripts y recursos |
-| ChatGPT (GPT personalizado, solo para investigar: los GPT se retiran el 2026-12-11) | `dist/gpt/<skill>/` | `<skill>.zip` como archivo de conocimiento + `instrucciones.txt` (ver `docs/gpt-personalizado.md`) |
 
 - Generar ambos con `.venv/Scripts/python tools/build_skills.py [skill]`. Nunca entregar uno solo.
 - **Antes de entregar zips con cambios, subir la versión en `VERSION`** (semver: parche para correcciones, menor para funcionalidad nueva). ChatGPT rechaza un complemento con la misma versión ya instalada.
 - Cada Skill necesita `skills/<skill>/chatgpt.json` (displayName, shortDescription, description, defaultPrompt, category); no se incluye en los zips. El autor está en `tools/build_config.json` y la versión en `VERSION`.
-- Las rutas de los scripts deben ser relativas a la carpeta de la Skill (`Path(__file__)`), y la carpeta de salida debe detectarse: `/mnt/user-data/outputs` (Claude) o `/mnt/data` (ChatGPT).
+- Las rutas de los scripts deben ser relativas a la carpeta de la Skill (`Path(__file__)`): la ruta de instalación cambia según la plataforma y la versión. La carpeta de salida se recibe con `--salida` o se detecta: `/mnt/user-data/outputs` (Claude), `/mnt/data` (ChatGPT chat); en el entorno de agente de ChatGPT no existen y el modelo debe indicar una carpeta escribible.
 - La carpeta de la Skill es de **solo lectura**: nunca escribir ahí; temporales en `/tmp` y resultados en la carpeta de salida.
 
 ## Principios y restricciones técnicas
