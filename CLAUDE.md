@@ -24,7 +24,8 @@ engines/content/       Motor Python para imágenes de redes
 knowledge/             Info corporativa, servicios, reglas comerciales, tono de voz
 skills/<skill>/SKILL.md Instrucciones de cada Skill
 tests/                 pytest
-build/, dist/          Artefactos generados (no versionados); dist/ produce los .zip de las Skills
+build/, dist/          Artefactos generados (no versionados): dist/claude/ y dist/chatgpt/
+tools/build_skills.py  Empaqueta cada Skill en sus dos formatos (ver "Empaquetado")
 docs/                  Plan de trabajo y documentación
 TAREAS.md              Plan de tareas: marcar [x] al completar cada tarea y commitear
 VERSION                Versión semántica de los paquetes
@@ -39,6 +40,19 @@ Dentro de las Skills (disponibles en el sandbox de Claude sin instalar nada): `p
 Solo en desarrollo (`requirements-dev.txt`): `jsonschema`, `pytest`.
 
 **No usar en las Skills** `jsonschema` ni `CairoSVG` (no vienen en el sandbox). La validación de datos dentro de las Skills se hace con un validador propio en Python puro; los SVG se generan como texto (Jinja2) y los PNG/JPG con Pillow, sin rasterizar SVG. No depender de `pip install` en tiempo de ejecución. Resultados de validación: `docs/validacion-plataformas.md`. GitHub Actions para empaquetar y publicar versiones.
+
+## Empaquetado: SIEMPRE dos versiones
+
+Cada Skill se entrega en dos zips distintos, porque las plataformas usan formatos diferentes:
+
+| Plataforma | Archivo | Estructura del zip |
+|---|---|---|
+| Claude | `dist/claude/<skill>.zip` | `<skill>/SKILL.md`, scripts y recursos |
+| ChatGPT | `dist/chatgpt/<skill>.zip` | `plugin.json`, `.codex-plugin/plugin.json`, `skills/<skill>/SKILL.md`, scripts y recursos |
+
+- Generar ambos con `.venv/Scripts/python tools/build_skills.py [skill]`. Nunca entregar uno solo.
+- Cada Skill necesita `skills/<skill>/chatgpt.json` (displayName, shortDescription, description, defaultPrompt, category); no se incluye en los zips. El autor está en `tools/build_config.json` y la versión en `VERSION`.
+- Las rutas de los scripts deben ser relativas a la carpeta de la Skill (`Path(__file__)`), y la carpeta de salida debe detectarse: `/mnt/user-data/outputs` (Claude) o `/mnt/data` (ChatGPT).
 
 ## Principios y restricciones técnicas
 

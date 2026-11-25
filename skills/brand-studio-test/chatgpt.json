@@ -1,0 +1,7 @@
+{
+  "displayName": "Brand Studio Test",
+  "shortDescription": "Diagnostico de Brand Studio",
+  "description": "Prueba tecnica del entorno de ejecucion de Brand Studio: diagnostico, recursos empaquetados y presentacion PPTX de prueba.",
+  "defaultPrompt": "Probar Brand Studio",
+  "category": "Other"
+}
