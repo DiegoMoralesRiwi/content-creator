@@ -27,7 +27,7 @@ Leyenda: `[x]` lista · `[ ]` pendiente. Plan detallado: [docs/plan-de-trabajo.m
 - [ ] Definir y probar el canal de distribución para ChatGPT (los complementos no entregan archivos binarios)
   - [x] Preparar prueba con GPT personalizado (`dist/gpt/`, guía en `docs/gpt-personalizado.md`)
   - [x] ~~Usar GPT personalizado como canal~~: descartado, ChatGPT retira los GPT el 2026-12-11 y los migra a complementos
-  - [ ] Crear el GPT de prueba, migrarlo a complemento y analizar el zip resultante (cómo lleva los archivos de conocimiento)
+  - [ ] ~~Crear GPT de prueba~~: ChatGPT ya no permite crear GPT. Alternativas: revisar el creador de complementos de la interfaz (¿admite archivos?) o migrar un GPT existente que tenga archivos de conocimiento y analizar el resultado
   - [ ] Probar si el complemento migrado entrega los archivos al entorno de ejecución
 - [ ] Verificar el tamaño máximo del zip y los límites de archivos (ChatGPT: 780 MB; Claude pendiente)
 - [ ] Verificar cómo se comparte una Skill con el espacio de trabajo en cada plataforma
