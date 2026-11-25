@@ -11,8 +11,9 @@ Leyenda: `[x]` lista · `[ ]` pendiente. Plan detallado: [docs/plan-de-trabajo.m
 - [x] Conectar el repositorio con GitHub (`main`)
 - [x] Actualizar el plan a tres empresas (Riwi, Blackbird LATAM, Blackbird USA)
 - [x] Python disponible en el equipo de desarrollo (3.14, se invoca con `py`)
-- [ ] Crear entorno virtual e instalar `requirements.txt`
-- [ ] Configurar `pytest` y una prueba básica
+- [x] Crear entorno virtual (`.venv`) e instalar `requirements.txt`
+- [x] Configurar `pytest` y pruebas de humo del stack (`tests/test_entorno.py`)
+- [ ] CairoSVG en Windows: falta la librería nativa cairo (prueba omitida). Decidir: instalar GTK/cairo local, o evitar CairoSVG si los sandboxes tampoco lo traen
 
 ## Fase 1 — Validación técnica en las plataformas (riesgo principal)
 

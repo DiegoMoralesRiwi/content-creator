@@ -11,8 +11,8 @@ Plan completo: [docs/plan-de-trabajo.md](docs/plan-de-trabajo.md).
 
 ## Desarrollo
 
-```bash
-python -m venv .venv
-pip install -r requirements.txt
-pytest
+```powershell
+py -m venv .venv
+.venvScriptspython -m pip install -r requirements.txt
+.venvScriptspython -m pytest
 ```
