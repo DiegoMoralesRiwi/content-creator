@@ -13,16 +13,16 @@ Leyenda: `[x]` lista · `[ ]` pendiente. Plan detallado: [docs/plan-de-trabajo.m
 - [x] Python disponible en el equipo de desarrollo (3.14, se invoca con `py`)
 - [x] Crear entorno virtual (`.venv`) e instalar `requirements.txt`
 - [x] Configurar `pytest` y pruebas de humo del stack (`tests/test_entorno.py`)
-- [ ] CairoSVG en Windows: falta la librería nativa cairo (prueba omitida). Decidir: instalar GTK/cairo local, o evitar CairoSVG si los sandboxes tampoco lo traen
+- [x] CairoSVG descartado (no está en el sandbox); ya no hace falta cairo en Windows
 
 ## Fase 1 — Validación técnica en las plataformas (riesgo principal)
 
 - [x] Crear una Skill mínima de prueba (`skills/brand-studio-test`: diagnóstico del entorno + PPTX)
 - [x] Script de empaquetado `tools/build_skills.py` → `dist/<skill>.zip`
 - [x] Probar la instalación y ejecución de la Skill en Claude (ver `docs/validacion-plataformas.md`)
-- [ ] Probar la instalación y ejecución de la Skill en ChatGPT — **bloqueado: requiere permiso de IT**
+- [ ] Probar la instalación y ejecución de la Skill en ChatGPT — **bloqueado: "Workspace plugin upload permission required"; un admin del workspace debe dar el permiso** (límite del zip: 780 MB)
 - [ ] Verificar las librerías disponibles en cada sandbox (Claude ✅: faltan jsonschema y CairoSVG; ChatGPT pendiente)
-- [ ] Decidir el reemplazo de jsonschema y CairoSVG en las Skills (no vienen en Claude)
+- [x] Decidir el reemplazo de jsonschema y CairoSVG: validador propio + SVG como texto y Pillow; dependencias separadas en `requirements-dev.txt`
 - [ ] Verificar que se usen las tipografías empaquetadas en la Skill
 - [ ] Verificar el tamaño máximo del zip y los límites de archivos
 - [ ] Verificar cómo se comparte una Skill con el espacio de trabajo en cada plataforma
@@ -35,7 +35,7 @@ Por cada marca: manual de identidad, logos, tipografías, colores, iconografía,
 - [ ] Riwi: recopilar y organizar recursos en `brands/riwi/`
 - [ ] Blackbird LATAM: recopilar y organizar recursos en `brands/blackbird-latam/`
 - [ ] Blackbird USA: recopilar y organizar recursos en `brands/blackbird-usa/`
-- [ ] Definir un esquema `brand.json` (colores, tipografías, logos, reglas) y validarlo con `jsonschema`
+- [ ] Definir un esquema `brand.json` (colores, tipografías, logos, reglas) y validarlo (jsonschema en pruebas; validador propio en las Skills)
 - [ ] Crear `brand.json` de cada marca
 - [ ] Confirmar licencias de uso de las tipografías
 

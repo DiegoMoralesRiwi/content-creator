@@ -1,5 +1,4 @@
 """Pruebas de humo: las librerías del stack se importan y generan archivos."""
-import pytest
 
 
 def test_pptx(tmp_path):
@@ -38,18 +37,9 @@ def test_pillow(tmp_path):
     assert out.stat().st_size > 0
 
 
-def test_jinja_y_jsonschema():
+def test_jinja_y_jsonschema_dev():
+    """jsonschema solo se usa en desarrollo (no viene en los sandboxes)."""
     from jinja2 import Template
     import jsonschema
     assert Template("Hola {{ marca }}").render(marca="Riwi") == "Hola Riwi"
     jsonschema.validate({"marca": "Riwi"}, {"type": "object", "required": ["marca"]})
-
-
-def test_cairosvg(tmp_path):
-    try:
-        import cairosvg
-    except OSError as e:  # falta la librería nativa cairo (común en Windows)
-        pytest.skip(f"cairo nativo no disponible: {e}")
-    out = tmp_path / "a.png"
-    cairosvg.svg2png(bytestring=b'<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"/>', write_to=str(out))
-    assert out.stat().st_size > 0

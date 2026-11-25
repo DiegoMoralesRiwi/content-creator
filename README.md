@@ -13,6 +13,6 @@ Plan completo: [docs/plan-de-trabajo.md](docs/plan-de-trabajo.md).
 
 ```powershell
 py -m venv .venv
-.venv/Scripts/python -m pip install -r requirements.txt
+.venv/Scripts/python -m pip install -r requirements-dev.txt
 .venv/Scripts/python -m pytest
 ```

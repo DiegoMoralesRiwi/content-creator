@@ -34,11 +34,15 @@ VERSION                Versión semántica de los paquetes
 
 En este equipo Python se invoca con `py` (no `python`): p. ej. `py -m venv .venv`, `py -m pytest`. Versión local: 3.14.
 
-Python con `python-pptx`, `python-docx`, `Pillow`, `CairoSVG`, `Jinja2`, `ReportLab`, `jsonschema`, `pytest`, `zipfile`. GitHub Actions para empaquetar y publicar versiones.
+Dentro de las Skills (disponibles en el sandbox de Claude sin instalar nada): `python-pptx`, `python-docx`, `Pillow`, `Jinja2`, `ReportLab`, `zipfile` y biblioteca estándar. LibreOffice (`soffice`) está disponible para convertir PPTX/DOCX a PDF.
+
+Solo en desarrollo (`requirements-dev.txt`): `jsonschema`, `pytest`.
+
+**No usar en las Skills** `jsonschema` ni `CairoSVG` (no vienen en el sandbox). La validación de datos dentro de las Skills se hace con un validador propio en Python puro; los SVG se generan como texto (Jinja2) y los PNG/JPG con Pillow, sin rasterizar SVG. No depender de `pip install` en tiempo de ejecución. Resultados de validación: `docs/validacion-plataformas.md`. GitHub Actions para empaquetar y publicar versiones.
 
 ## Principios y restricciones técnicas
 
-- Los scripts deben correr dentro del sandbox de ejecución de código de ChatGPT y de Claude: evitar dependencias exóticas, binarios del sistema o acceso a red. Validar en ambas plataformas antes de asumir que algo funciona (tipografías, CairoSVG/cairo, tamaño del zip).
+- Los scripts deben correr dentro del sandbox de ejecución de código de ChatGPT y de Claude: evitar dependencias exóticas, binarios del sistema o acceso a red. Validar en ambas plataformas antes de asumir que algo funciona (tipografías, tamaño del zip).
 - Cada paquete debe ser **autocontenido**: plantillas, fuentes, imágenes y scripts dentro del zip.
 - Toda salida debe pasar validación de reglas de marca (colores, tipografías, logos, cifras oficiales) antes de entregarse.
 - Datos corporativos y cifras solo desde `knowledge/`; nunca inventarlos.

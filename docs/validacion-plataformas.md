@@ -27,7 +27,7 @@ Instalación y ejecución correctas. El PPTX de prueba se generó y quedó dispo
 ### Implicaciones
 
 - **Funcionan sin instalar nada:** PPTX, DOCX, PDF e imágenes PNG/JPG.
-- **jsonschema y CairoSVG no están en el entorno.** Instalarlos con pip en cada conversación es lento y depende de la red. Opciones:
+- **jsonschema y CairoSVG no están en el entorno.** Decisión (2026-11-25): no usarlos dentro de las Skills.
   - jsonschema: usarlo solo en desarrollo y escribir un validador propio y ligero dentro de las Skills.
   - CairoSVG: generar los SVG como texto (con Jinja2) y los PNG/JPG con Pillow, sin rasterizar SVG.
 - LibreOffice está disponible, así que se pueden generar PDF convirtiendo el PPTX o el DOCX, como alternativa a ReportLab.
@@ -35,4 +35,4 @@ Instalación y ejecución correctas. El PPTX de prueba se generó y quedó dispo
 
 ## ChatGPT
 
-Bloqueado: la instalación de Skills requiere permiso de IT. Pendiente.
+Bloqueado. Al subir el zip en **Nuevo complemento** aparece: "Workspace plugin upload permission required". Un administrador del workspace de ChatGPT debe otorgar el permiso de subir complementos. La pantalla indica formatos `.zip`, `.tar.gz`, `.tgz` y tamaño máximo de 780 MB.
