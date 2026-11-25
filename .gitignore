@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+build/*
+!build/.gitkeep
+dist/*
+!dist/.gitkeep
+.env
+.claude/settings.local.json
+.DS_Store
+Thumbs.db

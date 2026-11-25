@@ -1,0 +1,8 @@
+python-pptx
+python-docx
+Pillow
+CairoSVG
+Jinja2
+reportlab
+jsonschema
+pytest
