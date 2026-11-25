@@ -10,7 +10,7 @@ Leyenda: `[x]` lista · `[ ]` pendiente. Plan detallado: [docs/plan-de-trabajo.m
 - [x] Crear `CLAUDE.md` con reglas del proyecto y de commits
 - [x] Conectar el repositorio con GitHub (`main`)
 - [x] Actualizar el plan a tres empresas (Riwi, Blackbird LATAM, Blackbird USA)
-- [ ] Instalar Python 3.11+ en el equipo de desarrollo
+- [x] Python disponible en el equipo de desarrollo (3.14, se invoca con `py`)
 - [ ] Crear entorno virtual e instalar `requirements.txt`
 - [ ] Configurar `pytest` y una prueba básica
 

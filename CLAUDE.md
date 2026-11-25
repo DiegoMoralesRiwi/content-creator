@@ -32,6 +32,8 @@ VERSION                Versión semántica de los paquetes
 
 ## Stack
 
+En este equipo Python se invoca con `py` (no `python`): p. ej. `py -m venv .venv`, `py -m pytest`. Versión local: 3.14.
+
 Python con `python-pptx`, `python-docx`, `Pillow`, `CairoSVG`, `Jinja2`, `ReportLab`, `jsonschema`, `pytest`, `zipfile`. GitHub Actions para empaquetar y publicar versiones.
 
 ## Principios y restricciones técnicas
