@@ -17,7 +17,8 @@ Leyenda: `[x]` lista · `[ ]` pendiente. Plan detallado: [docs/plan-de-trabajo.m
 
 ## Fase 1 — Validación técnica en las plataformas (riesgo principal)
 
-- [ ] Crear una Skill mínima de prueba ("hola mundo" que genere un PPTX)
+- [x] Crear una Skill mínima de prueba (`skills/brand-studio-test`: diagnóstico del entorno + PPTX)
+- [x] Script de empaquetado `tools/build_skills.py` → `dist/<skill>.zip`
 - [ ] Probar la instalación y ejecución de la Skill en Claude
 - [ ] Probar la instalación y ejecución de la Skill en ChatGPT
 - [ ] Verificar las librerías disponibles en cada sandbox (python-pptx, python-docx, Pillow, ReportLab, CairoSVG, Jinja2)
