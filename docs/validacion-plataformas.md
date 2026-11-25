@@ -89,6 +89,12 @@ Observaciones:
 - Falta confirmar que una **conversación nueva** cargue el complemento y ejecute el flujo con «Probar Brand Studio».
 - Plugin Creator sugiere, si algún entorno no da acceso a los archivos, un servidor MCP propio. Se descarta por ahora: requiere hosting (contradice el costo $0).
 
+### Complemento 0.3.0 en conversación nueva — ✅
+
+Mismo entorno de agente (`/home/agent/.codex/plugins/cache/workspace-shared-with-me/brand-studio-test/0.3.0/...`). Diagnóstico, prueba de recursos y PPTX mínimo correctos; los tres archivos se entregaron para descargar. La detección de carpeta de salida eligió `/workspace/scratch/<id>/brand-studio-output`. Jinja2 y CairoSVG siguen ausentes, sin impacto.
+
+**Conclusión de la Fase 1:** las dos plataformas ejecutan los scripts con recursos empaquetados (Claude como Skill, ChatGPT como complemento).
+
 ## Comparación y conclusiones
 
 | | Claude | ChatGPT |

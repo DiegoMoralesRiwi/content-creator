@@ -29,11 +29,11 @@ Leyenda: `[x]` lista · `[ ]` pendiente. Plan detallado: [docs/plan-de-trabajo.m
   - [x] ~~Usar GPT personalizado como canal~~: descartado, ChatGPT retira los GPT el 2026-12-11 y los migra a complementos
   - [x] ~~Crear GPT de prueba~~: ChatGPT ya no permite crear GPT
   - [x] Prueba con Plugin Creator: recursos intactos, PPTX y PNG generados (entorno de agente, sin Jinja2)
-  - [ ] Confirmar en una conversación nueva que el complemento 0.3.0 carga y ejecuta «Probar Brand Studio»
+  - [x] Confirmar en una conversación nueva que el complemento 0.3.0 carga y ejecuta «Probar Brand Studio»
   - [ ] Entender qué superficie de ChatGPT usa cada entorno (chat normal: archivos ausentes; agente/Work: archivos presentes)
 - [ ] Verificar el tamaño máximo del zip y los límites de archivos (ChatGPT: 780 MB; SKILL.md máx. 1 MiB; Claude pendiente)
 - [ ] Verificar cómo se comparte una Skill con el espacio de trabajo en cada plataforma
-- [ ] Documentar resultados y ajustar el stack si algo no funciona
+- [x] Documentar resultados y ajustar el stack (`docs/validacion-plataformas.md`)
 
 ## Fase 2 — Recursos de marca
 
