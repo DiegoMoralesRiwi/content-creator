@@ -1,5 +1,7 @@
 # Prueba: GPT personalizado en ChatGPT
 
+> **Aviso (2026-11-25):** ChatGPT informa: "Migra tus GPT a complementos a más tardar el 11 de diciembre. Los GPT que no se migren no estarán disponibles después del 11 de diciembre." Los GPT personalizados **no sirven como canal definitivo**. Esta prueba se usa ahora para otra cosa: crear el GPT con el zip como conocimiento, **migrarlo a complemento** y descargar el complemento resultante para ver cómo empaqueta OpenAI los archivos de conocimiento. Ese formato es el que habría que replicar.
+
 Los complementos de ChatGPT no entregan sus archivos al entorno de ejecución de código (ver `validacion-plataformas.md`). Esta prueba usa un **GPT personalizado**: los archivos de conocimiento de un GPT quedan disponibles para el código en `/mnt/data`.
 
 ## Archivos

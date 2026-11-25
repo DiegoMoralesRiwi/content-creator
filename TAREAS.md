@@ -26,7 +26,9 @@ Leyenda: `[x]` lista · `[ ]` pendiente. Plan detallado: [docs/plan-de-trabajo.m
 - [x] Verificar que las fuentes, plantillas y logos empaquetados lleguen al entorno — Claude ✅; ChatGPT ❌ (los archivos del complemento no llegan al entorno de ejecución)
 - [ ] Definir y probar el canal de distribución para ChatGPT (los complementos no entregan archivos binarios)
   - [x] Preparar prueba con GPT personalizado (`dist/gpt/`, guía en `docs/gpt-personalizado.md`)
-  - [ ] Ejecutar la prueba del GPT personalizado en ChatGPT
+  - [x] ~~Usar GPT personalizado como canal~~: descartado, ChatGPT retira los GPT el 2026-12-11 y los migra a complementos
+  - [ ] Crear el GPT de prueba, migrarlo a complemento y analizar el zip resultante (cómo lleva los archivos de conocimiento)
+  - [ ] Probar si el complemento migrado entrega los archivos al entorno de ejecución
 - [ ] Verificar el tamaño máximo del zip y los límites de archivos (ChatGPT: 780 MB; Claude pendiente)
 - [ ] Verificar cómo se comparte una Skill con el espacio de trabajo en cada plataforma
 - [ ] Documentar resultados y ajustar el stack si algo no funciona
