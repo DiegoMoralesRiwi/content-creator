@@ -21,7 +21,7 @@ Leyenda: `[x]` lista · `[ ]` pendiente. Plan detallado: [docs/plan-de-trabajo.m
 - [x] Script de empaquetado `tools/build_skills.py` → `dist/claude/` y `dist/chatgpt/` (formatos distintos por plataforma)
 - [x] Probar la instalación y ejecución de la Skill en Claude (ver `docs/validacion-plataformas.md`)
 - [x] Probar la instalación y ejecución de la Skill en ChatGPT (PPTX generado; sin internet; la carpeta de la Skill no se monta)
-- [x] Verificar las librerías disponibles en cada sandbox (base común: pptx, docx, Pillow, ReportLab, Jinja2, LibreOffice)
+- [x] Verificar las librerías disponibles en cada sandbox (base común: pptx, docx, Pillow, ReportLab, LibreOffice; Jinja2 no está en el entorno de agente de ChatGPT)
 - [x] Decidir el reemplazo de jsonschema y CairoSVG: validador propio + SVG como texto y Pillow; dependencias separadas en `requirements-dev.txt`
 - [x] Verificar que las fuentes, plantillas y logos empaquetados lleguen al entorno — Claude ✅; ChatGPT ✅ en entorno de agente (❌ en la primera prueba de chat)
 - [x] Definir el canal de distribución para ChatGPT: **complemento** (`dist/chatgpt/`). Con Plugin Creator los recursos sí llegan (ruta `/home/agent/.codex/plugins/cache/...`)
@@ -31,7 +31,6 @@ Leyenda: `[x]` lista · `[ ]` pendiente. Plan detallado: [docs/plan-de-trabajo.m
   - [x] Prueba con Plugin Creator: recursos intactos, PPTX y PNG generados (entorno de agente, sin Jinja2)
   - [ ] Confirmar en una conversación nueva que el complemento 0.3.0 carga y ejecuta «Probar Brand Studio»
   - [ ] Entender qué superficie de ChatGPT usa cada entorno (chat normal: archivos ausentes; agente/Work: archivos presentes)
-  - [ ] Probar si el complemento migrado entrega los archivos al entorno de ejecución
 - [ ] Verificar el tamaño máximo del zip y los límites de archivos (ChatGPT: 780 MB; SKILL.md máx. 1 MiB; Claude pendiente)
 - [ ] Verificar cómo se comparte una Skill con el espacio de trabajo en cada plataforma
 - [ ] Documentar resultados y ajustar el stack si algo no funciona
