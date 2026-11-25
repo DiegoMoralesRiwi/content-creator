@@ -25,6 +25,8 @@ Leyenda: `[x]` lista · `[ ]` pendiente. Plan detallado: [docs/plan-de-trabajo.m
 - [x] Decidir el reemplazo de jsonschema y CairoSVG: validador propio + SVG como texto y Pillow; dependencias separadas en `requirements-dev.txt`
 - [x] Verificar que las fuentes, plantillas y logos empaquetados lleguen al entorno — Claude ✅; ChatGPT ❌ (los archivos del complemento no llegan al entorno de ejecución)
 - [ ] Definir y probar el canal de distribución para ChatGPT (los complementos no entregan archivos binarios)
+  - [x] Preparar prueba con GPT personalizado (`dist/gpt/`, guía en `docs/gpt-personalizado.md`)
+  - [ ] Ejecutar la prueba del GPT personalizado en ChatGPT
 - [ ] Verificar el tamaño máximo del zip y los límites de archivos (ChatGPT: 780 MB; Claude pendiente)
 - [ ] Verificar cómo se comparte una Skill con el espacio de trabajo en cada plataforma
 - [ ] Documentar resultados y ajustar el stack si algo no funciona

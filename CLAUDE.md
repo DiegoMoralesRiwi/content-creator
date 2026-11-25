@@ -49,6 +49,7 @@ Cada Skill se entrega en dos zips distintos, porque las plataformas usan formato
 |---|---|---|
 | Claude | `dist/claude/<skill>.zip` | `<skill>/SKILL.md`, scripts y recursos |
 | ChatGPT | `dist/chatgpt/<skill>.zip` | `plugin.json`, `.codex-plugin/plugin.json`, `skills/<skill>/SKILL.md`, scripts y recursos |
+| ChatGPT (GPT personalizado, experimental) | `dist/gpt/<skill>/` | `<skill>.zip` como archivo de conocimiento + `instrucciones.txt` (ver `docs/gpt-personalizado.md`) |
 
 - Generar ambos con `.venv/Scripts/python tools/build_skills.py [skill]`. Nunca entregar uno solo.
 - **Antes de entregar zips con cambios, subir la versión en `VERSION`** (semver: parche para correcciones, menor para funcionalidad nueva). ChatGPT rechaza un complemento con la misma versión ya instalada.

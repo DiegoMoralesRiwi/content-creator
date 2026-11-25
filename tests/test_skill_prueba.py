@@ -48,3 +48,16 @@ def test_build_dos_formatos():
         assert "skills/brand-studio-test/assets/plantilla_prueba.pptx" in nombres
         codex = json.loads(z.read(".codex-plugin/plugin.json"))
         assert codex["name"] == "brand-studio-test" and codex["skills"] == "./skills"
+
+
+def test_gpt_arranque_desde_zip(tmp_path):
+    """Simula el GPT personalizado: descomprimir el zip y correr desde la copia."""
+    correr(RAIZ / "tools" / "build_skills.py", "brand-studio-test")
+    gpt = RAIZ / "dist" / "gpt" / "brand-studio-test"
+    assert "ARRANQUE" in (gpt / "instrucciones.txt").read_text(encoding="utf-8")
+    with zipfile.ZipFile(gpt / "brand-studio-test.zip") as z:
+        z.extractall(tmp_path / "tmp")
+    skill = tmp_path / "tmp" / "brand-studio-test"
+    salida = correr(skill / "scripts" / "recursos.py", "--salida", tmp_path)
+    assert "[FALTA]" not in salida and "[DAÑADO]" not in salida
+    assert str(skill) in salida
