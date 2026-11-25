@@ -19,9 +19,10 @@ Leyenda: `[x]` lista · `[ ]` pendiente. Plan detallado: [docs/plan-de-trabajo.m
 
 - [x] Crear una Skill mínima de prueba (`skills/brand-studio-test`: diagnóstico del entorno + PPTX)
 - [x] Script de empaquetado `tools/build_skills.py` → `dist/<skill>.zip`
-- [ ] Probar la instalación y ejecución de la Skill en Claude
-- [ ] Probar la instalación y ejecución de la Skill en ChatGPT
-- [ ] Verificar las librerías disponibles en cada sandbox (python-pptx, python-docx, Pillow, ReportLab, CairoSVG, Jinja2)
+- [x] Probar la instalación y ejecución de la Skill en Claude (ver `docs/validacion-plataformas.md`)
+- [ ] Probar la instalación y ejecución de la Skill en ChatGPT — **bloqueado: requiere permiso de IT**
+- [ ] Verificar las librerías disponibles en cada sandbox (Claude ✅: faltan jsonschema y CairoSVG; ChatGPT pendiente)
+- [ ] Decidir el reemplazo de jsonschema y CairoSVG en las Skills (no vienen en Claude)
 - [ ] Verificar que se usen las tipografías empaquetadas en la Skill
 - [ ] Verificar el tamaño máximo del zip y los límites de archivos
 - [ ] Verificar cómo se comparte una Skill con el espacio de trabajo en cada plataforma
