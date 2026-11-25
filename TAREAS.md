@@ -23,7 +23,8 @@ Leyenda: `[x]` lista · `[ ]` pendiente. Plan detallado: [docs/plan-de-trabajo.m
 - [x] Probar la instalación y ejecución de la Skill en ChatGPT (PPTX generado; sin internet; la carpeta de la Skill no se monta)
 - [x] Verificar las librerías disponibles en cada sandbox (base común: pptx, docx, Pillow, ReportLab, Jinja2, LibreOffice)
 - [x] Decidir el reemplazo de jsonschema y CairoSVG: validador propio + SVG como texto y Pillow; dependencias separadas en `requirements-dev.txt`
-- [ ] Verificar que las fuentes, plantillas y logos empaquetados lleguen al entorno y se usen — Claude ✅ (v0.2.0); ChatGPT pendiente
+- [x] Verificar que las fuentes, plantillas y logos empaquetados lleguen al entorno — Claude ✅; ChatGPT ❌ (los archivos del complemento no llegan al entorno de ejecución)
+- [ ] Definir y probar el canal de distribución para ChatGPT (los complementos no entregan archivos binarios)
 - [ ] Verificar el tamaño máximo del zip y los límites de archivos (ChatGPT: 780 MB; Claude pendiente)
 - [ ] Verificar cómo se comparte una Skill con el espacio de trabajo en cada plataforma
 - [ ] Documentar resultados y ajustar el stack si algo no funciona

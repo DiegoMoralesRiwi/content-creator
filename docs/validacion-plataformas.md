@@ -55,6 +55,16 @@ Instalado como complemento (tras resolver el permiso del workspace). El PPTX de 
 | Fuentes del sistema | 2390 |
 | Internet | **No** |
 
+### Prueba de recursos (v0.2.0) — ❌ bloqueada
+
+El complemento se instala y ChatGPT puede leer `SKILL.md` y ve en su catálogo los scripts, la fuente, la plantilla y el logo. Pero **esos archivos no existen en el entorno de ejecución de código**: se buscó en `/home/oai/skills/`, `/mnt/skills/`, `/skills/`, `/mnt/`, `/tmp/`, `/opt/` y en todo el sistema de archivos, sin resultados. Como la Skill prohíbe copiar o reescribir los scripts, no se generó ningún archivo (0 de 3).
+
+En la primera prueba (v0.1.0) los scripts sí corrieron porque ChatGPT los leyó del catálogo y los **reescribió** en `/tmp`. Eso funciona con texto, pero no sirve para archivos binarios (fuentes, plantillas, logos) y el modelo podría alterar el código.
+
+La documentación de OpenAI sobre complementos describe `scripts/` y `assets/` dentro de las Skills, pero no explica cómo llegan al entorno de ejecución ni ofrece un campo del manifiesto para montarlos ([skills](https://developers.openai.com/plugins/build/skills), [plugins](https://developers.openai.com/plugins/build/plugins)).
+
+**Conclusión:** hoy, un complemento de ChatGPT no sirve para entregar recursos de marca binarios al entorno de ejecución. Hay que buscar otro canal para ChatGPT.
+
 ## Comparación y conclusiones
 
 | | Claude | ChatGPT |
