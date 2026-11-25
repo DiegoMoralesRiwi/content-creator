@@ -54,6 +54,7 @@ Cada Skill se entrega en dos zips distintos, porque las plataformas usan formato
 - **Antes de entregar zips con cambios, subir la versión en `VERSION`** (semver: parche para correcciones, menor para funcionalidad nueva). ChatGPT rechaza un complemento con la misma versión ya instalada.
 - Cada Skill necesita `skills/<skill>/chatgpt.json` (displayName, shortDescription, description, defaultPrompt, category); no se incluye en los zips. El autor está en `tools/build_config.json` y la versión en `VERSION`.
 - Las rutas de los scripts deben ser relativas a la carpeta de la Skill (`Path(__file__)`), y la carpeta de salida debe detectarse: `/mnt/user-data/outputs` (Claude) o `/mnt/data` (ChatGPT).
+- La carpeta de la Skill es de **solo lectura**: nunca escribir ahí; temporales en `/tmp` y resultados en la carpeta de salida.
 
 ## Principios y restricciones técnicas
 

@@ -31,7 +31,8 @@ Instalación y ejecución correctas. El PPTX de prueba se generó y quedó dispo
   - jsonschema: usarlo solo en desarrollo y escribir un validador propio y ligero dentro de las Skills.
   - CairoSVG: generar los SVG como texto (con Jinja2) y los PNG/JPG con Pillow, sin rasterizar SVG.
 - LibreOffice está disponible, así que se pueden generar PDF convirtiendo el PPTX o el DOCX, como alternativa a ReportLab.
-- Pendiente: probar las tipografías empaquetadas en la Skill (el diagnóstico tenía 0).
+- **Recursos empaquetados (v0.2.0) ✅:** la carpeta de la Skill está en `/mnt/skills/plugins/<skill>`. Fuente, plantilla PPTX y logo llegaron intactos (sha256 coincide). Pillow cargó la fuente empaquetada y se generaron el PPTX (plantilla + logo) y el PNG (logo + fuente) en `/mnt/user-data/outputs`.
+- **No escribir en la carpeta de la Skill:** aunque el diagnóstico la reporta con permiso de escritura, Claude indica que debe tratarse como de solo lectura. Los archivos temporales y de salida van en la carpeta de salida o en `/tmp`.
 
 ## ChatGPT — 2026-11-25
 
